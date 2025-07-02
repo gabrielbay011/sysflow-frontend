@@ -28,7 +28,7 @@ O sistema também permite o gerenciamento de câmeras, catracas, andares e eleva
 ### Organização dos repositórios
 
 ```
-┌── 📁 apps/
+┌── 📁 sysflow-frontend/
 │ ├── 📁 mfe-root-config/     # Aplicação principal que orquestra os micro front-ends
 │ ├── 📁 mfe-auth/            # Micro front-end responsável pela autenticação do usuário
 │ └── 📁 mfe-buildings/       # Micro front-end principal das telas de edifício
