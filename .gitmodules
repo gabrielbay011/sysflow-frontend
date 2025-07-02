@@ -4,3 +4,6 @@
 [submodule "mfe-root-config"]
 	path = mfe-root-config
 	url = https://github.com/gabrielbay011/mfe-root-config.git
+[submodule "mfe-buildings"]
+	path = mfe-buildings
+	url = git@github.com:gabrielbay011/mfe-buildings.git
