@@ -6,4 +6,4 @@
 	url = https://github.com/gabrielbay011/mfe-root-config.git
 [submodule "mfe-buildings"]
 	path = mfe-buildings
-	url = git@github.com:gabrielbay011/mfe-buildings.git
+	url = https://github.com/gabrielbay011/mfe-buildings.git

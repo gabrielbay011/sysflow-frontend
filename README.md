@@ -7,6 +7,14 @@ O projeto contará com as funcionalidades de cadastro e login de usuários, alé
 Ao selecionar um edifício específico, será possível acessar informações detalhadas, como o fluxo de pessoas, equipamentos quebrados ou em manutenção. 
 O sistema também permite o gerenciamento de câmeras, catracas, andares e elevadores, oferecendo uma visão completa da estrutura e operação de cada prédio.
 
+### Clonando o Repositório
+
+Para clonar esse projeto e rodar localmente, basta executar esse comando no terminal:
+
+```
+git clone --recurse-submodules https://github.com/gabrielbay011/sysflow-frontend.git
+```
+
 ### Dependências Utilizadas
 
 - **`React`**: Biblioteca JavaScript para construção de interfaces de usuário.
