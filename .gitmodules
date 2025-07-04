@@ -1,6 +1,6 @@
-[submodule "mfe-auth-"]
-	path = mfe-auth-
-	url = https://github.com/gabrielbay011/mfe-auth-.git
+[submodule "mfe-auth"]
+	path = mfe-auth
+	url = https://github.com/gabrielbay011/mfe-auth.git
 [submodule "mfe-root-config"]
 	path = mfe-root-config
 	url = https://github.com/gabrielbay011/mfe-root-config.git
