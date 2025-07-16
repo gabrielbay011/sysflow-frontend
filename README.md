@@ -18,9 +18,8 @@ git clone --recurse-submodules https://github.com/gabrielbay011/sysflow-frontend
 ### Dependências Utilizadas
 
 - **`React`**: Biblioteca JavaScript para construção de interfaces de usuário.
-- **`Single-SPA`**: Framework para composição de micro front-ends.
-- **`TypeScript`**: Superset de JavaScript utilizado para tipagem estática.
-- **`React Router DOM`**: Gerenciamento de rotas dentro de cada micro front-end.
+- **`Single-SPA`**: Framework para composição de microfrontends.
+- **`React Router DOM`**: Gerenciamento de rotas dentro de cada microfrontend.
 - **`Tailwind CSS`**: Utilitário para estilização da interface.
 - **`ESLint + Prettier`**: Padronização e formatação do código.
 - **`Husky`**: Ferramentas de automação para validações antes dos commits.
@@ -29,7 +28,7 @@ git clone --recurse-submodules https://github.com/gabrielbay011/sysflow-frontend
 - **`GraphQL`**: Linguagem de consulta para APIs, utilizada em conjunto com Apollo.
 - **`Apollo Client`**: Cliente GraphQL para integração com APIs e cache local.
 - **`Nhost`**: Backend como serviço com autenticação, banco de dados e storage.
-- **`CryptoJS`**: Biblioteca para criptografia de dados em JavaScript.
+- **`Swiper`**: Biblioteca para criação de sliders e carrosséis responsivos.
 
 ## Estrutura Geral do Projeto
 
@@ -37,15 +36,16 @@ git clone --recurse-submodules https://github.com/gabrielbay011/sysflow-frontend
 
 ```
 ┌── 📁 sysflow-frontend/
-│ ├── 📁 mfe-root-config/     # Aplicação principal que orquestra os micro front-ends
-│ ├── 📁 mfe-auth/            # Micro front-end responsável pela autenticação do usuário
-│ └── 📁 mfe-buildings/       # Micro front-end principal das telas de edifício
+│ ├── 📁 mfe-root-config/     # Aplicação principal que orquestra os microfrontends
+│ ├── 📁 mfe-auth/            # Microfrontend responsável pela autenticação do usuário
+│ └── 📁 mfe-buildings/       # Microfrontend principal das telas de edifício
+│ └── 📁 mfe-navbar/          # Microfrontend responsável pela navbar
 └── 📄 README.md
 ```
 
 ### mfe-root-config
 
-O módulo root-config é responsável por orquestrar todos os micro front-ends da aplicação. Ele registra e carrega dinamicamente cada módulo, além de definir as rotas de acesso entre eles. Também centraliza bibliotecas compartilhadas como o `React` e `React-Dom`. Com isso, garante uma navegação fluida entre os micro front-ends.
+O módulo root-config é responsável por orquestrar todos os microfrontends da aplicação. Ele registra e carrega dinamicamente cada módulo, além de definir as rotas de acesso entre eles. Também centraliza bibliotecas compartilhadas como o `React` e `React-Dom`. Com isso, garante uma navegação fluida entre os microfrontends.
 
 ### mfe-auth
 
@@ -53,8 +53,13 @@ O módulo auth é responsável por toda a autenticação da aplicação, incluin
 
 ### mfe-buildings
 
-O módulo buildings é responsável por toda a gestão dos edifícios cadastrados pelo usuário. Ele exibe a lista de edifícios pertencentes ao usuário e permite o acesso a informações detalhadas de cada um. Entre os dados disponíveis estão o fluxo de pessoas, equipamentos quebrados ou em manutenção, além de detalhes sobre câmeras, catracas, elevadores e andares. 
-### Estrutura de Cada Micro Front-End
+O módulo buildings é responsável por toda a gestão dos edifícios cadastrados pelo usuário. Ele exibe a lista de edifícios pertencentes ao usuário e permite o acesso a informações detalhadas de cada um. Entre os dados disponíveis estão o fluxo de pessoas, equipamentos quebrados ou em manutenção, além de detalhes sobre câmeras, catracas, elevadores e andares.
+
+### mfe-navbar
+
+O módulo navbar é responsável pela navegação principal da aplicação. Ele fornece acesso rápido às principais páginas do sistema por meio de um menu responsivo, adaptado para diferentes tamanhos de tela. Além de exibir o logotipo da aplicação, o componente gerencia o estado de abertura do menu em dispositivos móveis e destaca a rota ativa, oferecendo uma experiência de navegação intuitiva e integrada entre os micro frontends.
+
+### Estrutura de Cada Microfrontend
 
 ```
 📁 [nome-do-módulo]/
@@ -70,7 +75,7 @@ O módulo buildings é responsável por toda a gestão dos edifícios cadastrado
 │   │   │   └── 📄 [arquivo-schema].ts
 │   │   ├── 📁 validators/
 │   │   │   └── 📄 [arquivo-validator].ts
-│   │   └── 📁 Pages/
+│   │   └── 📁 pages/
 │   │       └── 📄 [arquivo-página].tsx
 │   │
 │   ├── 📁 utils/
@@ -83,7 +88,15 @@ O módulo buildings é responsável por toda a gestão dos edifícios cadastrado
 │   │   └── 📁 validators/
 │   │       └── 📄 [arquivo-validator].ts
 │   │
-│   ├── 📄 [nome-do-módulo].tsx     # Adapta o micro front-end react para o single-spa
+│   ├── 📁 lib/
+│   │   ├──  📄 nhost.ts 
+│   │   └──  📄 apollo-client.ts
+│   │
+│   ├── 📁 public/
+│   │   └── 📁 images/
+│   │       └── 🖼️ [nome-da-imagem].svg
+│   │
+│   ├── 📄 [nome-do-módulo].tsx     # Adapta o microfrontend react para o single-spa
 │   ├── 📄 root.component.tsx       # Componente que define as rotas da aplicação
 │   ├── 📄 index.css                # Estilos globais via Tailwind CSS
 │   └── 📄 declarations.d.ts        # Tipagens globais para arquivos estáticos
@@ -104,9 +117,9 @@ O módulo buildings é responsável por toda a gestão dos edifícios cadastrado
 
 ## Configurações Gerais de React e Single-SPA
 
-- Todos os micro front-ends são aplicações React, registradas no root-config via registerApplication.
-- O root-config é responsável por carregar dinamicamente os módulos via SystemJS, mantendo a separação entre contextos (cada micro front-end).
-- O React Router Dom é utilizado dentro de cada micro front-end para gerenciamento interno de rotas.
+- Todos os microfrontends são aplicações React, registradas no root-config via registerApplication.
+- O root-config é responsável por carregar dinamicamente os módulos via SystemJS, mantendo a separação entre contextos (cada microfrontend).
+- O React Router Dom é utilizado dentro de cada microfrontend para gerenciamento interno de rotas.
 
 ## Convenções de Codificação
 
